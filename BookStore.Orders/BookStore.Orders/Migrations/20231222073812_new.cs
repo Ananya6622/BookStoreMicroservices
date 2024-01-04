@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BookStore.Orders.Migrations
 {
-    public partial class migrations : Migration
+    public partial class @new : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,11 +11,14 @@ namespace BookStore.Orders.Migrations
                 name: "OrderTable",
                 columns: table => new
                 {
-                    OrderId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    OrderId = table.Column<string>(nullable: false),
                     BookId = table.Column<int>(nullable: false),
                     UserId = table.Column<int>(nullable: false),
-                    OrderDate = table.Column<DateTime>(nullable: false)
+                    Quantity = table.Column<int>(nullable: false),
+                    OrderDate = table.Column<DateTime>(nullable: false),
+                    OrderAmount = table.Column<double>(nullable: false),
+                    url = table.Column<string>(nullable: true),
+                    IsSuccess = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {

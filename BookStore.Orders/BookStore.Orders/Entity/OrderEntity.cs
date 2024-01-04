@@ -8,7 +8,7 @@ namespace BookStore.Orders.Entity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int OrderId { get; set; }
+        public string OrderId { get; set; }
         public int BookId { get; set; }
         public int UserId { get; set; }
         public int Quantity {  get; set; }
@@ -18,7 +18,9 @@ namespace BookStore.Orders.Entity
 
         [NotMapped]
         public UserEntity UserDetails { get; set; }
-        [NotMapped]
+        
         public double OrderAmount { get; set; }
+        public string url { get; set; }
+        public bool IsSuccess { get; set; }
     }
 }

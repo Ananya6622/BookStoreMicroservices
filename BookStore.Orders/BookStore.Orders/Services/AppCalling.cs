@@ -23,9 +23,9 @@ namespace BookStore.Orders.Services
         {
             HttpClient client = new HttpClient();
 
-            string url = "https://localhost:44305/api/Book/GetBooksById?bookId";
+            string url = $"https://localhost:44305/api/Book/GetBooksById?bookId={bookId}";
 
-            HttpResponseMessage responseobj = await client.GetAsync(url + bookId);
+            HttpResponseMessage responseobj = await client.GetAsync(url);
 
             if (responseobj.IsSuccessStatusCode)
             {
@@ -46,11 +46,12 @@ namespace BookStore.Orders.Services
         public static async Task<UserEntity> GetUserDetails(string token)
         {
             HttpClient httpClient = new HttpClient();
-            string url = "https://localhost:44391/api/User/MyProfile?userId=";
+            string url = "https://localhost:44391/api/User/MyProfile?userId=2";
+
+            //HttpResponseMessage response = await httpClient.GetAsync(url);
+            httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
 
             HttpResponseMessage response = await httpClient.GetAsync(url);
-            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", token);
-
 
             if (response.IsSuccessStatusCode)
             {

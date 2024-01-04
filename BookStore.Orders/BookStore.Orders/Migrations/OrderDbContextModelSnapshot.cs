@@ -21,13 +21,18 @@ namespace BookStore.Orders.Migrations
 
             modelBuilder.Entity("BookStore.Orders.Entity.OrderEntity", b =>
                 {
-                    b.Property<int>("OrderId")
+                    b.Property<string>("OrderId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("BookId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsSuccess")
+                        .HasColumnType("bit");
+
+                    b.Property<double>("OrderAmount")
+                        .HasColumnType("float");
 
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
@@ -37,6 +42,9 @@ namespace BookStore.Orders.Migrations
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
+
+                    b.Property<string>("url")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("OrderId");
 

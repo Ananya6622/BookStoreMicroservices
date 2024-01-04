@@ -14,5 +14,6 @@ namespace BookStore.Orders.Entity
         public double Price { get; set; }
         public int Quantity { get; set; }
         public int UserId {  get; set; }
+        
     }
 }

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookStore.Orders.Migrations
 {
     [DbContext(typeof(OrderDbContext))]
-    [Migration("20231124103931_migrations1")]
-    partial class migrations1
+    [Migration("20231222073812_new")]
+    partial class @new
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,13 +23,18 @@ namespace BookStore.Orders.Migrations
 
             modelBuilder.Entity("BookStore.Orders.Entity.OrderEntity", b =>
                 {
-                    b.Property<int>("OrderId")
+                    b.Property<string>("OrderId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("BookId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsSuccess")
+                        .HasColumnType("bit");
+
+                    b.Property<double>("OrderAmount")
+                        .HasColumnType("float");
 
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
@@ -39,6 +44,9 @@ namespace BookStore.Orders.Migrations
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
+
+                    b.Property<string>("url")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("OrderId");
 
